@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import {phones, laptops} from "./mydatabase.js";
@@ -10,7 +9,7 @@ class HomePage extends React.PureComponent{
 		super(props);
 		this.state = {
 			items: phones,
-		}
+		};
 	}
 
 	handleChange(event){
@@ -30,19 +29,19 @@ class HomePage extends React.PureComponent{
 			}
 		}
 		console.log("App state", this.state);
-	};
+	}
 
 	render(){
 		return (
 			<>
 				<Header/>
 				<select onChange={this.handleChange.bind(this)}>
-	    			<option value="phones">Phones</option>
-	    			<option value="laptops">Laptops</option>
+					<option value="phones">Phones</option>
+					<option value="laptops">Laptops</option>
 				</select>
 				<ItemList items={this.state.items} />
 			</>
-		)
+		);
 	}
 }
 
