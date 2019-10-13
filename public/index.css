@@ -51,9 +51,15 @@ body {
   font-size: 18px;
 }
 .content a {
-@@ -56,4 +60,4 @@ body {
+  text-decoration: none;
+}
+
+.itemContainer{
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  padding: 40px 20px;
+}
 
 .itemContainer .item__image{
   width: 200px;
 } 
-}
