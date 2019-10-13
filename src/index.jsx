@@ -6,10 +6,6 @@ const root = document.getElementById("app");
 console.log("root", root);
 
 ReactDOM.render(
-  React.createElement(
-    "button",
-    {},
-    "I am a button, Hello world"
-  ),
-  root,
+	<button>i am button, test</button>,
+	root
 );
