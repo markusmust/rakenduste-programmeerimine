@@ -21,10 +21,11 @@ const getItems = () => {
 };
 
 const getItem = (itemID) =>{
-	return getItems().find(item=>item.id === itemId)
+	return getItems().find(item=>item.id === itemID)
 };
 
 
 module.exports = {
-	getItems
+	getItems,
+	getItem
 };
