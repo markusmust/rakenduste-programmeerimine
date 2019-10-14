@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "webpack",
-    "start": "node server/server.js",
+    "start": "node server.js",
     "start:dev": "webpack-dev-server --open --mode=\"development\"",
     "lint": "eslint --version"
   },

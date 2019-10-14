@@ -12,6 +12,20 @@ class HomePage extends React.PureComponent{
 		};
 	}
 
+	componentDidMount(){
+		fetch("http://localhost:9000/api/items")
+		.then(res =>{
+			console.log("res", res);
+			return res.json();
+		})
+		.then( items=> {
+			console.log("items", items);
+		})
+		.catch(err =>{
+			console.log("err", err);
+		});
+	}
+
 	handleChange(event){
 		console.log(event.target.value);
 		switch (event.target.value) {
