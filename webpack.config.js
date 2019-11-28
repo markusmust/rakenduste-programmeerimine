@@ -20,6 +20,10 @@ module.exports = {
 
   module: {
     rules: [
+    {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
      { 
         enforce: "pre",
         test: /\.(js|jsx)$/, 
@@ -27,7 +31,7 @@ module.exports = {
         loader: 'eslint-loader',
         options: {
           failOnError: true,
-        } 
+        },
       },
       { 
         test: /\.(js|jsx)$/, 
