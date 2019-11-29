@@ -2,7 +2,8 @@ import React from "react";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 import Checkbox from "./Checkbox.jsx";
-//import {phones, laptops} from "./mydatabase.js";
+import propTypes from "prop-types";
+import "./homepage.css";
 
 class HomePage extends React.PureComponent{
 
@@ -11,7 +12,7 @@ class HomePage extends React.PureComponent{
 		this.state = {
 			items: [],
       allCategories: ["phones", "laptops"],
-			selectedCategory: ["phones"],
+			selectedCategories: ["phones"],
 		};
 	}
 
@@ -35,15 +36,28 @@ fetchItems = () => {
 			console.log("err", err);
 		});
 	};
-	handleDropdown(event){
-		console.log(event.target.value);
+	handleDropdown = (event) => {
+		console.log(event.target.value, event.target.name);
+		if(this.isSelected(event.target.name)){
+			const clone = this.state.selectedCategories.slice();
+			const index = this.state.selectedCategories.indexOf(event.target.name);
+			clone.splice(index, 1);
+			this.setState({
+				selectedCategories: clone
+			});
+		}
+		else{
+			this.setState({
+				selectedCategories: this.state.selectedCategories.concat([event.target.name])
+			});
+		}
 		/*this.setState({
 			selectedCategory: event.target.value
 		});*/
 	}
 
 	getVisibleItems = () => {
-		return this.state.items.filter(item => item.category === this.state.selectedCategory);
+		return this.state.items.filter(item => this.isSelected(item.category));
 	}
 
   isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
@@ -53,23 +67,41 @@ fetchItems = () => {
 		return (
 			<>
 				<Header/>
-        {
-          this.state.allCategories.map( categoryName => {
-            return (
-                <Checkbox
-                  key={categoryName}
-                  name={categoryName}
-                  onChange={this.handleDropdown}
-                  checked={this.isSelected(categoryName)}
-                />  
-              );
-          })
-        }
-
+				<ItemFilters 
+					allCategories={this.state.allCategories}
+					handleDropdown={this.handleDropdown}
+					isSelected={this.isSelected}
+				/>
 				<ItemList items={this.getVisibleItems()} />
 			</>
 		);
 	}
 }
+
+const ItemFilters = ({allCategories, handleDropdown, isSelected}) => {
+	return (
+	<div className={"itemFilters-wrapper"}>
+		{
+			allCategories.map( categoryName => {
+				return (
+					<Checkbox
+						key={categoryName}
+						name={categoryName}
+						onChange={handleDropdown}
+						checked={isSelected(categoryName)}
+					/>  
+				);
+			})
+		}
+	</div>
+	);
+};
+
+ItemFilters.propTypes = {
+	allCategories: propTypes.array.isRequired,
+	handleDropdown: propTypes.func.isRequired,
+	isSelected: propTypes.func.isRequired,
+};
+
 
 export default HomePage;
