@@ -15,26 +15,27 @@ class HomePage extends React.PureComponent{
 		};
 	}
 
+
 	componentDidMount(){
 		this.fetchItems();
 	}
 
-fetchItems = () => {
-	fetch("/api/items")
-		.then(res =>{
-			console.log("res", res);
-			return res.json();
-		})
-		.then( items=> {
-			console.log("items", items);
-			this.setState({
-				items
+	fetchItems = () => {
+		fetch("/api/items")
+			.then(res =>{
+				console.log("res", res);
+				return res.json();
+			})
+			.then( items=> {
+				console.log("items", items);
+				this.setState({
+					items
+				});
+			})
+			.catch(err =>{
+				console.log("err", err);
 			});
-		})
-		.catch(err =>{
-			console.log("err", err);
-		});
-	};
+		};
 	handleDropdown(event){
 		console.log(event.target.value);
 		/*this.setState({
@@ -46,7 +47,7 @@ fetchItems = () => {
 		return this.state.items.filter(item => item.category === this.state.selectedCategory);
 	}
 
-  isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
+	isSelected = (name) => this.state.selectedCategory.indexOf(name) >= 0;
 
 	render(){
 		console.log("this.state", this.state);
