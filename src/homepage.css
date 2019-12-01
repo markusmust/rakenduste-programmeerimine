@@ -1,10 +1,29 @@
-.itemFilters-wrapper {
-	display: flex;
-	width: 965px;
-	margin: 0 auto;
-	margin-bottom: 25px;
+  
+body {
+    background: lightgrey;
 }
-
-.itemFIlter-wrapper > div {
-	margin-right: 25px;
+.items-header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 5px;
+    padding: 15px; 
+    margin-bottom: 0px;
+    margin-right: 0px;
+    padding-right: 7px;
+    position: relative;
+}
+.body-wrapper{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.filters-wrapper{
+    border-radius: 5px;
+    padding: 15px;
+    background: white;
+    margin: 0px 5px;
+    display: flex;
+}
+.filters-wrapper > .toggleButton{
+    margin-right: 25px;
 }
