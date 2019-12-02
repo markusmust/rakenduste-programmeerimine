@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import "./itemlist.css";
 
 const ItemList = (props) => {
+    console.log("items list", props);
     return (
     <div className="items-layout">
         {
         props.items.map( item => {
             return <Item 
-            key={item.id}
-            id={item.id}
+            key={item._id}
+            id={item._id}
             imgSrc={item.imgSrc}
             title={item.title}
             price={item.price}
@@ -51,7 +52,7 @@ Item.propTypes = {
     id: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
   };
 
 export default ItemList;
