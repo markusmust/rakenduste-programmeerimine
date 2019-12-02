@@ -1,12 +1,10 @@
 const User = require("./user.model.js");
 const jwt = require("jsonwebtoken");
 
-const JWT_PRIVATE_KEY = ("secretkey123");
-
 exports.login = (req, res) =>{
     User.login(req.body)
     .then( user =>{
-        jwt.sign(user, JWT_PRIVATE_KEY, function(err, token) {
+        jwt.sign(user, process.env.JWT_KEY, function(err, token) {
             if(err) {
                 console.log("err", err);
                 return res.status(500);
