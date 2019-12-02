@@ -15,6 +15,7 @@ userSchema.statics.login = function({email, password}){
             if(userDoc === null) return reject("User not found");
             bcrpyt.compare(password, userDoc.hash, function(err, result) {
                 if(err) return reject(err);
+                if(!result) return reject("Invalid password");
                 resolve( {
                     email: userDoc.email,
                     createdAt: userDoc.createdAt,
