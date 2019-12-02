@@ -3,12 +3,15 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
-require("dotenv").config();
 const itemRouter = require("./server/item.router.js");
 const userRouter = require("./server/user.router.js");
 const DB = require("./server/database.js");
 const Item = require("./server/item.model.js");
 const bodyParser = require("body-parser");
+
+if(process.env.NODE_ENV !== "production"){
+  require("dotenv").config();
+}
 
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0-e1ug4.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 

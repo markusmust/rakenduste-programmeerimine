@@ -12,7 +12,7 @@ router.get("/api/users", (req, res) =>{
     });
 });
 
- router.post("/api/signup", (req, res) =>{
+ router.post("/api/users/signup", (req, res) =>{
     User.signup(req.body)
     .then( user =>{
         res.status(200).json(user);

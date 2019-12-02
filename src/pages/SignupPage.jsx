@@ -48,7 +48,7 @@ class SignupPage extends React.PureComponent {
                 <form className="register-form" onSubmit={this.handleSubmit}>
                     <input type="email" placeholder="email address" name={"email"} onChange={this.handleChange}/>
                     <input type="password" placeholder="password" name={"password"} onChange={this.handleChange}/>
-                    <input type="password" placeholder="password" name={"confirmPassword"} onChange={this.handleChange}/>
+                    <input type="password" placeholder="Confirm password" name={"confirmPassword"} onChange={this.handleChange}/>
                     <button>create</button>
                     <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
                 </form>
