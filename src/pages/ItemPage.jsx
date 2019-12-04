@@ -14,7 +14,7 @@ class ItemPage extends React.PureComponent{
 	}
 
 	fetchItem = () => {
-		fetch(`/api/items/${this.props.match.params.itemId}`)
+		fetch(`/api/v1/items/${this.props.match.params.itemId}`)
 			.then( res =>{
 				return res.json();
 			})
@@ -30,6 +30,8 @@ class ItemPage extends React.PureComponent{
 	}
 
 	render(){
+		console.log("this.props", this.props);
+        console.log("itemID", this.props.match.params.itemId);
 		return (
 			<>
 				<div className={"itemContainer"}>
