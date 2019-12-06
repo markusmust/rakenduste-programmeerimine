@@ -13,7 +13,7 @@ router.delete("/items/:itemId", (req, res) =>{
 });
 
 
-
+/* 
     router.post("/items", (req, res) =>{
     const props = {
         imgSrc: "google.com",
@@ -21,7 +21,7 @@ router.delete("/items/:itemId", (req, res) =>{
         price: 200,
         category: "phones",
     }; 
-
+ 
      const item1 = new Item(props);
     item1.save( err =>{
         if(err){
@@ -33,7 +33,7 @@ router.delete("/items/:itemId", (req, res) =>{
         res.send(201);
     });
 }); 
-
+ */
 // return an item
 router.get("/items/:itemId", (req, res)=>{
     Item.findById(req.params.itemId, function (err,item){
