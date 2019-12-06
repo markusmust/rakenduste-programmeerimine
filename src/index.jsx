@@ -12,8 +12,10 @@ import ItemPage from "./pages/ItemPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import store from "./store.js";
+import "./pages/maincss.css";
 console.log("hw", store);
 
 const authDefaultValue = {
@@ -54,6 +56,7 @@ class App extends React.Component{
 				<Route path="/signup" exact component={SignupPage} />
 				<Route path="/users/:userId" exact component = {UserPage}/>
 				<Route path="/items/:itemId" excat component={ItemPage} />
+				<Route path="/checkout/cart" excat component={CartPage} />
 				<Route component ={NotFound} />
 			</Switch>
 			</BrowserRouter>

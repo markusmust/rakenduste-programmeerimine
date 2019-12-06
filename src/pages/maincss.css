@@ -1,0 +1,12 @@
+.box{
+    border-radius: 4px;
+    padding: 15x;
+    background: white;
+    border: 1px solid #3333332b;
+}
+
+.spacer {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
