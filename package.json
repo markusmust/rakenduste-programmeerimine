@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "webpack",
-    "start": "node server.js",
+    "start:prelive": "npm run build && PORT=3001 npm run start",
+    "start": "nodemon ./server/server.js",
     "start:dev": "webpack-dev-server --open --mode=\"development\"",
     "lint": "eslint --version"
   },
@@ -15,6 +16,7 @@
     "express-validator": "^6.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.13",
+    "nodemon": "^2.0.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-icons": "^3.8.0",

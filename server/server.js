@@ -3,12 +3,12 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
-const itemRouter = require("./server/item.router.js");
-const userRouter = require("./server/user.router.js");
-const DB = require("./server/database.js");
-const Item = require("./server/item.model.js");
+const itemRouter = require("./item.router.js");
+const userRouter = require("./user.router.js");
+const DB = require("./database.js");
+const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
-const authRouter = require("./server/auth.router.js");
+const authRouter = require("./auth.router.js");
 
 if(process.env.NODE_ENV !== "production"){
   require("dotenv").config();
