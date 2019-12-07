@@ -2,6 +2,7 @@ import React from "react";
 import { getItems } from "../actions/itemsActions";
 import { FaRegTrashAlt } from "react-icons/fa";
 import "../components/cart.css";
+import FancyButton from "../components/FancyButton.jsx";
 import PropTypes from "prop-types";
 
 class CartPage extends React.PureComponent{
@@ -38,9 +39,7 @@ class CartPage extends React.PureComponent{
                 <tr>
                   <td></td>
                   <td>
-                      <div className="submit-button">
-                          Vormista ost
-                      </div>
+                      <FancyButton>Vormista ost</FancyButton>
                   </td>
                 </tr>
                 </tbody>
