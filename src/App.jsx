@@ -1,10 +1,12 @@
 import React from "react";
-import store from "./store.js";
+import store from "./store/store.js";
 import Header from "./components/Header.jsx";
 import "./pages/maincss.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
   
 import Pages from "./pages/index.jsx";
+import {Provider} from "react-redux";
+
 
 console.log("store", store);
 
@@ -34,7 +36,8 @@ class App extends React.Component{
 
 	render(){
 		return (
-			<AuthContext.Provider value={this.state}>
+			<Provider store={store}>
+				<AuthContext.Provider value={this.state}>
 			<BrowserRouter>
 				<Route path={"/"} component={Header}/>
 			<Switch>
@@ -52,6 +55,7 @@ class App extends React.Component{
 			</Switch>
 			</BrowserRouter>
 			</AuthContext.Provider>
+			</Provider>
 		);
 	}
 }

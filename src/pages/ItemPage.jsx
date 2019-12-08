@@ -1,10 +1,15 @@
 import React from "react";
-//import {phones} from "./mydatabase.js";
 import PropTypes from "prop-types";
 import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../store/store.js";
+
 
 class ItemPage extends React.PureComponent{
+	static propTypes = {
+		dispatch: PropTypes.func.isRequired,
+	};
 
 	constructor(props){
 		super(props);
@@ -29,6 +34,11 @@ class ItemPage extends React.PureComponent{
 				console.log("item page ",err);
 			});
 	}
+
+	handleBuy = () => {
+		console.log("handleBuy");
+		this.props.dispatch(addItem(this.state));
+	};
 
 	render(){
 		return (
@@ -56,7 +66,7 @@ class ItemPage extends React.PureComponent{
                </div>
              </div>
           <div className={"itemPage-footer"}>
-            <FancyButton onClick={()=>0}>Lisa toode ostukorvi</FancyButton>
+            <FancyButton onClick={this.handleBuy}>Lisa toode ostukorvi</FancyButton>
           </div>
         </div>
             </>
@@ -71,4 +81,4 @@ ItemPage.propTypes = {
 	match: PropTypes.object.isRequired,
 };
 
-export default ItemPage;
+export default connect()(ItemPage);
