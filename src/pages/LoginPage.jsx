@@ -60,7 +60,8 @@ class LoginPage extends React.PureComponent {
                         placeholder="email" 
                         name="email" 
                         value={this.state.email}
-                        onChange={this.handleChange}                      
+                        onChange={this.handleChange}
+                        autoComplete="off" required                      
                         />
                         <input 
                         type="password" 
@@ -73,7 +74,7 @@ class LoginPage extends React.PureComponent {
                         <p className="message">Not registered? <Link to={"/signup"}>Create an account</Link></p>
                     </form>
                 </div>
-            </>
+           </>     
         );
     }
 }
