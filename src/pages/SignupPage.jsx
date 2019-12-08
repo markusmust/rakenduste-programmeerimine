@@ -1,3 +1,5 @@
+import * as services from "../services";
+
 import React from "react";
 import "./form.css";
 import {Link} from "react-router-dom";
@@ -19,26 +21,16 @@ class SignupPage extends React.PureComponent {
     }
     handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("/api/v1/auth/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state),
-        })
-        .then( res => {
-            if(!res.ok) throw "signup failed";
-            return res.json();
-          })
-        .then ( () =>{          
-            this.props.history.push("/login");
-            toast.success("Registreerumine õnnestus");
-        })
-        .catch( err => {
-            toast.error("Registreerumine ebaõnnestus");
-            console.log("Error", err);
-        });
-    };
+        services.signup(this.state)
+            .then ( () =>{          
+                this.props.history.push("/login");
+                toast.success("Registreerumine õnnestus");
+            })
+            .catch( err => {
+                toast.error("Registreerumine ebaõnnestus");
+                console.log("Error", err);
+            });
+        };
 
     handleChange = (e) =>{
         this.setState({

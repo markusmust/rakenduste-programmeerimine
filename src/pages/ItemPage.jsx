@@ -1,3 +1,5 @@
+import * as services from "../services";
+
 import React from "react";
 import PropTypes from "prop-types";
 import "./itempage.css";
@@ -22,10 +24,7 @@ class ItemPage extends React.PureComponent{
 	}
 
 	fetchItem = () => {
-		fetch(`/api/v1/items/${this.props.match.params.itemId}`)
-			.then( res =>{
-				return res.json();
-			})
+		services.getItem({itemId: this.props.match.params.itemId})
 			.then( item => {
 				this.setState({
 					...item

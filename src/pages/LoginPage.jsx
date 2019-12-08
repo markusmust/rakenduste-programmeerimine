@@ -1,3 +1,5 @@
+import * as services from "../services";
+
 import React from "react";
 import "./form.css";
 import {Link} from "react-router-dom";
@@ -23,14 +25,7 @@ class LoginPage extends React.PureComponent {
     }
     handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("/api/v1/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body:   JSON.stringify(this.state),
-        })
-        .then (res => res.json())
+        services.login(this.state)
         .then( this.handleSuccess)
         .catch( err => {
             console.log("Error", err);
