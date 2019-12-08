@@ -5,7 +5,7 @@ import SortDropdown from "../components/SortDropdown.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
 import {connect} from "react-redux";
-import {getItems} from "../store/store.js";
+import {getItems} from "../store/actions.js";
 import {ItemProps} from "./CartPage.jsx";
 
 class HomePage extends React.PureComponent{
@@ -19,7 +19,7 @@ class HomePage extends React.PureComponent{
         super(props);
         this.state = {
             sortDirection: -1,
-            allCategories: ["phones", "computers"],
+            allCategories: ["phones", "laptops"],
             selectedCategories: ["phones"],
         };
     }
