@@ -6,13 +6,8 @@ import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../store/actions.js";
-import {toast} from "react-toastify";
-
 
 class ItemPage extends React.PureComponent{
-	static propTypes = {
-		dispatch: PropTypes.func.isRequired,
-	};
 
 	constructor(props){
 		super(props);
@@ -36,7 +31,6 @@ class ItemPage extends React.PureComponent{
 	}
 
 	handleBuy = () => {
-		toast.success("Toode lisatud");
 		console.log("handleBuy");
 		this.props.dispatch(addItem(this.state));
 	};
@@ -80,6 +74,7 @@ const itemDesc = "Item description";
 
 ItemPage.propTypes = {
 	match: PropTypes.object.isRequired,
+	dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(ItemPage);
