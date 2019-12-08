@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { userIcon, cartIcon } from "../icons.js";
 import "./header.css";
 import PropTypes from "prop-types";
-import authConsumer from "./authConsumer.jsx";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
+import { UserPropTypes } from "../store/reducer.js";
 
 const Header = ({user, cart}) => {
   return (
@@ -14,9 +14,9 @@ const Header = ({user, cart}) => {
         <img className="header__logo" src="/media/logo.png" />
       </Link>
       <div className="header__buttons">
-        {user.email && <WelcomeIcon user={user} />}
+        {user && <WelcomeIcon user={user} />}
 
-        {!user.email && <LoginRegisterIcon />}
+        {!user && <LoginRegisterIcon />}
 
         <Link to={"/checkout/cart"} className={"header__button"}>
           <img src={cartIcon} style={{ height: 35 }} />
@@ -30,7 +30,7 @@ const Header = ({user, cart}) => {
 
 Header.propTypes = {
 	token: PropTypes.string,
-  user: PropTypes.object,
+  user: PropTypes.shape(UserPropTypes),
   cart: PropTypes.arrayOf(ItemProps).isRequired,
 };
 
@@ -66,13 +66,14 @@ const WelcomeIcon = ({ user }) => (
 );
 
 WelcomeIcon.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape(UserPropTypes),
 };
 
 const mapStateToProps = (store) => {
   return {
     cart: store.cart,
+    user: store.user,
   };
 };
 
-export default connect(mapStateToProps)(authConsumer(Header));
+export default connect(mapStateToProps)(Header);

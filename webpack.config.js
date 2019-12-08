@@ -1,14 +1,15 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: './src/index.jsx',
+  entry: "./src/index.jsx",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js"
   },
+  devtool: "eval-soruce-map",
   plugins: [
   new CleanWebpackPlugin(),
     new CopyPlugin([
@@ -22,13 +23,13 @@ module.exports = {
     rules: [
     {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
      { 
         enforce: "pre",
         test: /\.(js|jsx)$/, 
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: "eslint-loader",
         options: {
           failOnError: true,
         },
@@ -36,18 +37,18 @@ module.exports = {
       { 
         test: /\.(js|jsx)$/, 
         exclude: /node_modules/,
-        use: 'babel-loader' 
+        use: "babel-loader" 
       }
     ]
   },
 
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000,
     proxy: {
-      '/api': 'http://localhost:3000'
+      "/api": "http://localhost:3000"
     }
   }
 };
