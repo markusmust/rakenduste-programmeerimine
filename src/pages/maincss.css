@@ -46,3 +46,13 @@ body{
     cursor: pointer;
     transition: all .2s;
 }
+
+.field {
+    padding: 5px 15px;
+    border: 1px solid black;
+    background: rgb(233, 229, 229);
+    border-radius: 5px;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+}

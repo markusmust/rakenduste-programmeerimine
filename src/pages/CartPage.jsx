@@ -5,6 +5,7 @@ import FancyButton from "../components/FancyButton.jsx";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {removeItem} from "../store/actions";
+import {toast} from "react-toastify";
 
 class CartPage extends React.PureComponent{
   static propTypes = {
@@ -23,6 +24,7 @@ class CartPage extends React.PureComponent{
 
   handleTrash = (_id) => {
     this.props.dispatch(removeItem(_id));
+    toast.success("Toode eemaldatud");
   };
 
     render(){

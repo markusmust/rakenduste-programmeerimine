@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import { userUpdate } from "../store/actions";
+import {toast} from "react-toastify";
 
 
 class LoginPage extends React.PureComponent {
@@ -33,6 +34,7 @@ class LoginPage extends React.PureComponent {
         .then( this.handleSuccess)
         .catch( err => {
             console.log("Error", err);
+            toast.error("Logimine ebaõnnestus");
         });
     };
 

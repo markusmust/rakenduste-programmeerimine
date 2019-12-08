@@ -2,7 +2,7 @@ import React from "react";
 import "./form.css";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-
+import {toast} from "react-toastify";
 
 class SignupPage extends React.PureComponent {
 
@@ -27,19 +27,13 @@ class SignupPage extends React.PureComponent {
             body: JSON.stringify(this.state),
         })
         .then( res => res.json())
-        .then ( data =>{
-            console.log("data", data);
-            
+        .then ( () =>{          
             this.props.history.push("/login");
+            toast.success("Registreerumine õnnestus");
         })
         .catch( err => {
+            toast.error("Registreerumine ebaõnnestus");
             console.log("Error", err);
-        });
-    };
-
-    handleChange = (e) =>{
-        this.setState({
-            [e.target.name]: e.target.value,
         });
     };
 
