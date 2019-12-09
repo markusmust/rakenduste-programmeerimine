@@ -1,5 +1,6 @@
 import * as services from "../services";
 import * as selectors from "../store/selectors"; 
+import {toast} from "react-toastify";
 
 export const ITEMS_SUCCESS = "ITEMS_SUCCESS";
 export const ITEMS_REQUEST = "ITEMS_REQUEST";
@@ -9,6 +10,25 @@ export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
  
+export const addItem = (item) => (dispatch, getState) => {
+    const store = getState();
+    const itemId = item._id;
+    const token = selectors.getToken(store);
+    const userId = selectors.getUser(store)._id;
+    services.addItemToCart({itemId, token, userId})
+    .then(() => {
+        toast.success("Toode edukalt lisatud! :)");
+        dispatch({
+            type: ITEM_ADDED,
+            payload: itemId,
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        toast.error("Toote lisamine ebaõnnestus!");
+    });
+};
+
 export const getItems = () => (dispatch, getState) => {
 	const store = getState();
 	if(selectors.getItems(store).length > 0) return null;
@@ -35,12 +55,6 @@ export const getItems = () => (dispatch, getState) => {
   
   export const itemsFailure = () => ({
 	type: ITEMS_FAILURE,
-  });
-  
-  
-  export const addItem = (item) => ({
-	type: ITEM_ADDED,
-	payload: item,
   });
   
   export const removeItem = (_id) => ({

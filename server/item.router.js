@@ -7,7 +7,7 @@ const Item = require("./item.model.js");
 router.delete("/:itemId", (req, res) =>{
     Item.deleteOne({"_id": mongoose.Types.ObjectId(req.params.itemId)}, (err)=>{
         if(err) return res.send(500);
-        console.log("save success");
+        console.log("delete success");
         return res.send(204);
     });
 });

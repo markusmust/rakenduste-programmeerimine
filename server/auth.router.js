@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-//const mongoose = require("mongoose");
 const userController = require("./user.controller.js");
 const { check, validationResult} = require("express-validator");
 const jwt = require("jsonwebtoken");

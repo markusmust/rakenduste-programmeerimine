@@ -29,20 +29,20 @@ export const getUser = ({userId, token}) => {
 };
 
 export const addItemToCart = ({userId, itemId, token}) => {
-    return fetch(`${basePath}/user/${userId}/cart/${itemId}`, {
+    return fetch(`${basePath}/users/${userId}/cart/${itemId}`, {
         method: "PUT",
-        headers:{
+        headers: {
             "Authorization": `Bearer" ${token}`
         }
     })
     .then(res =>{
         if(!res.ok) throw "addItemToCart failed";
-        return res.json();
+        return true;
     });
 };
 
 export const removeItemFromCart = ({userId, itemId, token}) => {
-    return fetch(`${basePath}/user/${userId}/cart/${itemId}`, {
+    return fetch(`${basePath}/users/${userId}/cart/${itemId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Bearer" ${token}`
@@ -50,7 +50,7 @@ export const removeItemFromCart = ({userId, itemId, token}) => {
     })
     .then(res =>{
         if(!res.ok) throw "removeItemFromCart failed";
-        return res.json();
+        return true;
     });
 };
 
