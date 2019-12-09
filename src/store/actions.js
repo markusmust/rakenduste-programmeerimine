@@ -10,6 +10,24 @@ export const ITEM_REMOVED = "ITEM_REMOVED";
 export const USER_UPDATE = "USER_UPDATE";
 export const TOKEN_UPDATE = "TOKEN_UPDATE";
  
+export const removeItem = (itemId) => (dispatch, getState) => {
+  const store = getState();
+  const token = selectors.getToken(store);
+  const userId = selectors.getUser(store)._id;
+  services.removeItemFromCart({itemId, token, userId})
+  .then(() => {
+      toast.success("Toode edukalt eemaldatud!");
+      dispatch({
+          type: ITEM_REMOVED,
+          payload: itemId,
+      });
+  })
+  .catch(err => {
+      console.error(err);
+      toast.error("Toote eemaldamine ebaõnnestus!");
+  });
+};
+
 export const addItem = (item) => (dispatch, getState) => {
     const store = getState();
     const itemId = item._id;
@@ -55,11 +73,6 @@ export const getItems = () => (dispatch, getState) => {
   
   export const itemsFailure = () => ({
 	type: ITEMS_FAILURE,
-  });
-  
-  export const removeItem = (_id) => ({
-	type: ITEM_REMOVED,
-	payload: _id,
   });
   
   export const userUpdate = (user) => ({
