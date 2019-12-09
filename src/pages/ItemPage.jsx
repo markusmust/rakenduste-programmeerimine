@@ -7,6 +7,8 @@ import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../store/actions.js";
 
+
+
 class ItemPage extends React.PureComponent{
 
 	constructor(props){
